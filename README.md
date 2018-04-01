@@ -4,4 +4,8 @@ You are having soil data. But, unaware about climate/weather effects on crops. T
 
 ## Project Screens
 
-![Porject Screenshot](https://github.com/abhigyantiwari/windandcrops/screens/one.png)
+![Porject Screenshot](https://github.com/abhigyantiwari/windandcrops/blob/master/screens/one.png)
+![Porject Screenshot](https://github.com/abhigyantiwari/windandcrops/blob/master/screens/two.png)
+![Porject Screenshot](https://github.com/abhigyantiwari/windandcrops/blob/master/screens/three.png)
+![Porject Screenshot](https://github.com/abhigyantiwari/windandcrops/blob/master/screens/four.png)
+![Porject Screenshot](https://github.com/abhigyantiwari/windandcrops/blob/master/screens/six.png)
