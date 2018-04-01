@@ -6,14 +6,16 @@ You are having soil data. But, unaware about climate/weather effects on crops. T
 
 * Codeigniter
 * AngularJS
+* SPA
+* REST based Communication
+* JWT Authentication
+* MySQL
 * Bootstrap
 * jQuery
 * Maps APIs
 * Openweathermap APIs
 * jQuery Location Picker
-* REST based Communication
-* JWT Authentication
-* MySQL
+
 
 etc.
 
