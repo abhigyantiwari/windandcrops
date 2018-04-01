@@ -1,0 +1,94 @@
+<div id="user-trouble" ng-show="userTrouble">
+	<div class="container">
+		<div id="err-msg">
+			<h1 class="wc-text animated shake" style="color: red">Kind of Trouble</h1>
+			<h4>You can check the console for error detail.</h4>
+			<a href="/">Home</a>
+		</div>
+	</div>
+</div>
+
+<div id="acc-page-bg" class="container-fluid" ng-show="showPage">
+	<div class="container text-left">
+			<h1 class=" animated fadeIn" id="splash-acc-logo" ng-click="">Wind&Crops</h1>
+		<h1 class=" animated fadeIn" id="acc-info">Account can help you save crop and weather related data.</h1>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-success animated fadeInLeft">
+					<div class="panel-heading">
+						<h1 id="acc-title">Login</h1>
+					</div>
+					<div class="panel-body">
+						<form ng-submit="loginFormSubmit()" name="loginform">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+									<input type="email" ng-model="log_email" class="form-control" name="log_email" placeholder="Enter Your Email" required>
+								</div>
+								<span class="text-danger" ng-show="loginform.log_email.$touched && loginform.log_email.$invalid">Not a valid Email</span>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+									<input type="password" ng-model="log_password" class="form-control" name="log_password" placeholder="Enter Password" required>
+								</div>
+								<span class="text-danger" ng-show="loginform.log_password.$touched && (log_password == '' || log_password == null)">Enter Password!</span>
+							</div>
+							<div class="form-group">
+								<!-- <div class="g-recaptcha" data-sitekey="6LdGdEUUAAAAANqOzgeDjUUW8UI1jSLh4g7Wr686"></div> -->
+							</div>
+							<div class="form-group">
+								<div class="alert alert-danger" ng-show="showLoginErr">{{ loginErr }}</div>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-log-in"></i> Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-info  animated fadeInRight">
+					<div class="panel-heading">
+						<h1 id="acc-title">Signup</h1>
+					</div>
+					<div class="panel-body">
+						<form ng-submit="signupFormSubmit()" class="form" name="signupform">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+									<input type="text" ng-model="fullname" class="form-control" name="fullname" placeholder="Your Full Name" required>
+								</div>
+								<span class="text-danger" ng-show="signupform.fullname.$touched && (fullname == '' || fullname == null)">Enter full name!</span>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+									<input type="email" ng-model="reg_email"  class="form-control" name="reg_email" placeholder="Enter Your Email" required>
+								</div>
+								<span class="text-danger" ng-show="signupform.reg_email.$touched && signupform.reg_email.$invalid">Not a valid email!</span>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+									<input type="password" class="form-control" ng-model="reg_password" name="reg_password" placeholder="Enter Password">
+								</div>
+								<span class="text-danger" ng-show="signupform.reg_password.$touched && (reg_password == '' || reg_password == null)">Enter Password!</span>
+							</div>
+							<div class="form-group">
+								<div ng-show="showSignupErr" ng-class="(regStatus=='empty'||regStatus=='exists'||regStatus=='failed')?'alert alert-danger':'alert alert-success'">{{ signupErr }}</div>
+							</div>
+							<div class="form-group">
+								<!-- <div class="g-recaptcha" data-sitekey="6Lf3zE4UAAAAACL0oZCgi0gEOIaMVH23Q6nX_4wl"></div> -->
+							</div>
+							<div class="form-group">
+								<button class="btn btn-info"><i class="glyphicon glyphicon-user"></i> Submit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,115 @@
+<div ng-class="dashActive?'bg':''"></div>
+<div id="user-trouble" ng-show="userTrouble">
+	<div class="container">
+		<div id="err-msg">
+			<h1 class="wc-text animated shake" style="color: red">Kind of Trouble</h1>
+			<h4>You can check the console for error detail.</h4>
+			<a href="/">Home</a>
+		</div>
+	</div>
+</div>
+<div class="container-fluid prof-pg" ng-show="showProfile">
+	<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+		<span class="glyphicon glyphicon-menu-hamburger"></span></button>
+		<ul class="dropdown-menu">
+			<li><a href="/">Home</a></li>
+			<li><a href="#" ng-click="logout()"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+			<li><a ng-click="">Home</a></li>
+		</ul>
+	</div>
+	<div class="container" ng-show="locateUser">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1 class="wc-text animated fadeIn">&nbsp&nbspWelcome {{ profileData.userdata.fullname }}!</h1>
+				<div class="page-title">
+					<h4 class="wc-text"><span class="pick-below-logo">WIND&CROPS</span> shows location based weather and crops which can be grown.</h4>
+				</div>
+			</div>
+		</div>
+		<div class="ask-locate">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<button class="animated fadeInLeft btn btn-primary btn-lg" ng-click="getGeolocation()"><i class="glyphicon glyphicon-map-marker"></i> Get Location Using GPS</button>
+				</div>
+				<div class="text-center">
+					<h4 class="text-danger" style="font-family: sans-serif;" ng-show="geoLocErr">{{ geoLocErrMsg }}</h4>
+				</div>
+				<div class="col-md-12 text-center">
+					<h1 class="wc-text">OR</h1>
+				</div>
+				<div class="col-md-12 text-center">
+					<button class="animated fadeInLeft btn btn-success btn-lg" ng-click="pickLocation()"><i class="glyphicon glyphicon-globe"></i> Pick Location in Map</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container location-pick" ng-show="locationPickerActive">
+		<div class="row">
+			<div class="col-md-5 col-xs-12 col-sm-12 col-lg-4 search-location pull-right animated fadeInTop">
+				<h4 class="wc-text"><i class="glyphicon glyphicon-map-marker"></i> Pick location</h4>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></div>
+						<input type="text" id="placeNameSource" class="form-control" placeholder="You can enter place name">
+					</div>
+				</div>
+				<div class="container-fluid text-center">
+					<button class="btn btn-primary map-pic-nxt" ng-click="storeLoc()"><i class="glyphicon glyphicon-map-marker"></i>Select this location</button>
+				</div>
+				<h4 class="wc-text"><span class="pick-below-logo">WIND&CROPS</span></h4>
+			</div>
+		</div>
+		<div id="locater"></div>
+	</div>
+	<div class="container" ng-show="dashActive">
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 curr-loc pull-right">
+					<h4 class="wc-text"><i class="far fa-user fa-lg"></i>&nbsp&nbsp{{ profileData.userdata.fullname  }}</h4>
+				</div>
+			</div>
+			
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h1 class="wc-text" style="color: grey">Current Climate 
+					<br><img ng-src="{{ getWeatherIcon( weather.weather[0].icon )}}" style="max-width: 29px;" alt="">
+					<span class="badge bdage-info" style="font-size: 14px;">{{weather.weather[0].main}}</span></h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2 col-md-2 col-xs-4 text-center curr-w">
+					<a style="color: #5ba7ff"><i class="fa fa-thermometer-half fa-lg"></i> {{weather.main.temp}} &deg;C</a><br>
+					<h5 class="wc-text" style="color: grey">Temperature</h5>
+				</div>
+				<div class="col-lg-2 col-md-2 col-xs-3 text-center curr-w">
+					<a  style="color: #ffc97a"><i class="fa fa-arrows-alt"></i> {{weather.wind.speed}} kph</a><br>
+					<h5 class="wc-text"  style="color: grey">Wind Speed</h5>
+				</div>
+				<div class="col-lg-2 col-md-2 col-xs-3 text-center curr-w">
+					<a  style="color: #b28cff"><i class="fa fa-tint fa-lg"></i> {{weather.main.humidity}}%</a><br>
+					<h5 class="wc-text"  style="color: grey">Humidity</h5>
+				</div>
+			</div>
+			
+		</div>
+		<div class="container" ng-show="popdata != null && popdata != undefined">
+			<div class="row">
+				<div class="col-sm-12">
+					<h1 class="wc-text" style="color: grey">Location Data</h1>
+				</div>
+				<div class="col-sm-4 curr-loc popdata white-text">
+					<h3 class="white-text wc-text">Population</h3>
+					<h2 class="wc-text"><i class="fa fa-users fa-lg "></i>&nbsp&nbsp{{ popdata.population }}</h2>
+					<hr>
+					<h4 class="wc-text"><i class="fa fa-map-signs fa-lg"></i>&nbsp&nbsp{{ popdata.city }}&nbsp&nbsp <i class="fa fa-map-marker-alt fa-lg"></i>&nbsp&nbsp{{ popdata.state }}</h4>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+</div>
