@@ -75,11 +75,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<h1 class="wc-text" style="color: grey">Current Climate 
-					<br><img ng-src="{{ getWeatherIcon( weather.weather[0].icon )}}" style="max-width: 29px;" alt="">
+					<h1 class="wc-text" style="color: grey">Current Climate
+					<br><img ng-src="{{ 'http://openweathermap.org/img/w/' + weather.weather[0].icon + '.png'}}" style="max-width: 29px;" alt="">
 					<span class="badge bdage-info" style="font-size: 14px;">{{weather.weather[0].main}}</span></h1>
 				</div>
 			</div>
+
+
 			<div class="row">
 				<div class="col-lg-2 col-md-2 col-xs-4 text-center curr-w">
 					<a style="color: #5ba7ff"><i class="fa fa-thermometer-half fa-lg"></i> {{weather.main.temp}} &deg;C</a><br>
@@ -98,14 +100,40 @@
 		</div>
 		<div class="container" ng-show="popdata != null && popdata != undefined">
 			<div class="row">
+
+
 				<div class="col-sm-12">
 					<h1 class="wc-text" style="color: grey">Location Data</h1>
 				</div>
+
 				<div class="col-sm-4 curr-loc popdata white-text">
 					<h3 class="white-text wc-text">Population</h3>
 					<h2 class="wc-text"><i class="fa fa-users fa-lg "></i>&nbsp&nbsp{{ popdata.population }}</h2>
 					<hr>
 					<h4 class="wc-text"><i class="fa fa-map-signs fa-lg"></i>&nbsp&nbsp{{ popdata.city }}&nbsp&nbsp <i class="fa fa-map-marker-alt fa-lg"></i>&nbsp&nbsp{{ popdata.state }}</h4>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-12">
+					<h1 class="wc-text" style="color: grey">Weather Forecast (5 days ahead)</h1>
+				</div>
+
+				<div class="col-sm-3 curr-w panel panel-default" ng-repeat="forecast in forecasts.list">
+					<div class="panel-body text-left wc-text forecast-card">
+						<div class="">
+							<h4><a style="color: #5ba7ff"><i class="fa fa-thermometer-half fa-lg"></i> {{forecast.main.temp}}&deg;C</a><br></h4>
+							<h4><a  style="color: #ffc97a"><i class="fa fa-arrows-alt"></i> {{forecast.wind.speed}} kph</a><br></h4>
+							<h4><a  style="color: #b28cff"><i class="fa fa-tint fa-lg"></i> {{forecast.main.humidity}}%</a><br></h4>
+						</div>
+						<div class="">
+							<h4><img ng-src="{{ 'http://openweathermap.org/img/w/' + forecast.weather[0].icon + '.png'}}" style="max-width: 29px;" alt="Weather icon">
+					<span class="badge bdage-info" style="font-size: 14px;">{{forecast.weather[0].main}}</span></h4>
+						</div>
+						<h5>{{ forecast.dt*1000 | date:'medium' }}</h5>
+					</div>
 				</div>
 			</div>
 			

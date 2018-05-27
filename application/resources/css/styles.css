@@ -231,3 +231,6 @@ body, html{
 .popdata{
 	background-color: #5ba7ff;
 }
+.forecast-card{
+	margin: 10px;
+}

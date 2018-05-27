@@ -20,6 +20,15 @@ class Userdat extends CI_Controller{
 		echo ($wDat);
 	}
 
+	public function weather_forecast(){
+		$lon = $this->input->get('lon');
+		$lat = $this->input->get('lat');
+
+		header("Content-type: application/json");
+		$wDat = file_get_contents("http://api.openweathermap.org/data/2.5/forecast?lat=".$lat."&lon=".$lon."&units=metric&appid=d0140333c4865b5d39c8dee07f821433");
+		echo ($wDat);
+	}
+
 	public function rev_geocode(){
 		$lon = $this->input->get('lon');
 		$lat = $this->input->get('lat');

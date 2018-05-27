@@ -154,8 +154,11 @@ windandcrops.controller('profileController', ['$scope', '$http', '$location', fu
         }
     }
 
+    $scope.getWeatherIcon = function(iconName){
+        
+    }
 
-
+    //Hide location picking stuff
     $scope.showDash = function() {
         $scope.locData = JSON.parse(localStorage.getItem("wandcLoc"));
         $scope.lat = $scope.locData.lat;
@@ -163,6 +166,7 @@ windandcrops.controller('profileController', ['$scope', '$http', '$location', fu
         $scope.placename = $scope.locData.place;
         $scope.locateUser = false;
         $scope.locationPickerActive = false;
+        //Gets weather data
         try {
             console.log($scope.lat + " " + $scope.lon);
             $http.get('userdat/weather_data?lon=' + $scope.lon + "&lat=" + $scope.lat).then(function(response) {
@@ -180,6 +184,20 @@ windandcrops.controller('profileController', ['$scope', '$http', '$location', fu
             })
         } catch (e) {
             console.log(err);
+            $scope.userTrouble = true;
+        } 
+
+        //Get forecast
+        try {
+            $http.get("userdat/weather_forecast?lon="+$scope.lon+"&lat="+$scope.lat).then(function(response){
+                $scope.forecasts = response.data;
+                console.log($scope.forecasts);
+            }, function(err){
+                console.log(err);
+                $scope.userTrouble = true;
+            })
+        } catch(e) {
+            console.log(e);
             $scope.userTrouble = true;
         }
         $scope.dashActive = true;
